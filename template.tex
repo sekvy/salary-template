@@ -1,0 +1,87 @@
+\documentclass[letterpaper]{salary}
+%\documentclass[letterpaper,currency=dollar]{salary}
+%\documentclass[letterpaper,currency=euro]{salary}
+%\documentclass[letterpaper,currency=pound]{salary}
+
+\newcommand{\printDate}{$date$}
+\newcommand{\dueDate}{$duedate$}
+\newcommand{\me}{$myCompany$}
+\newcommand{\vatPercent}{$vatPercent$}
+\setmetadata{\me}
+
+\defaultfontfeatures{ Path = ./Fonts/ }
+\usepackage{fontawesome}
+
+\pagestyle{fancy}
+\fancyfoot[LO,CE]{$footer$}
+
+%Debugging multicol
+%\usepackage{color}
+%\setlength{\columnseprule}{1pt}
+%\def\columnseprulecolor{\color{blue}}
+
+\begin{document}
+
+    \newfontface\mainLightItalic{OpenSans-LightItalic}
+    \makeheader{\me}
+
+
+    \begin{infoSection}{Till}
+        $for(client)$
+        \sectionItem{$client$}
+        $endfor$
+    \end{infoSection}
+    \vspace{1em}
+
+    \begin{infoSection}{Bankkontonummer}
+        $for(bank)$
+        \sectionItem{$bank$}
+        $endfor$
+    \end{infoSection}
+
+    \vspace{1em}
+
+    \begin{infoSection}{Utbetalningsdatum}
+        \sectionItem{$duedate$}
+    \end{infoSection}
+
+    \vspace{2em}
+
+    \begin{salaryItemization}
+        $for(service)$
+        \lineitem{$service.date$}{$service.amount$}{$service.description$}
+        $endfor$
+
+        \beginsummary
+        \summaryline{Bruttol\"on:}{\formatcurrency{\subtotal}}
+        \summaryline{Skatt \normalsize:}{-\vattotal}
+        \summaryline{\textbf{Utbetalt:}}{\total \thinspace\currencysym}
+    \end{salaryItemization}
+
+    \vfill
+    \noindent\rule{\textwidth}{1pt}
+    \textbf{\me}
+    \vspace{1em}
+
+    \begin{tabularx}{\textwidth}{X@{} @{}X@{} @{}X}
+        % Contact
+        \begin{footerSection}{Contact}
+            $for(addressLines)$
+            \sectionItem{$addressLines$}
+            $endfor$
+            \sectionItem{
+            % Contact information with icon e.g email, phone, github.
+                \begin{contactIconItemization}
+                    \contactIconItem{\faMobile}{$contact.phone$}
+                    \contactIconItem{\small\faEnvelopeO}{$contact.email$}
+                \end{contactIconItemization}
+            }
+        \end{footerSection} & %
+        % VAT number
+        \begin{footerSection}{VAT no}
+            \sectionItem{$VATno$}
+        \end{footerSection} & %
+
+    \end{tabularx}
+
+\end{document}

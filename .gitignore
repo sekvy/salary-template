@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+*.pdf
+*.gz
+.DS_store
+.vagrant/
+.idea/
+*.synctex(busy)
+*.synctex
+*.yaml
+!exampleDetails.yaml

@@ -1,0 +1,31 @@
+---
+myCompany: "Företag AB"
+VATno: "SE123123123123"
+vatPercent: 30
+date: 2022-12-25
+duedate: 2022-12-25
+
+addressLines:
+  - Företagsvägen 123
+  - 123 FöretagsLund
+
+contact:
+  phone: \phonenumber{+46123123123}
+  email: foretag@foretagmail.com
+
+client:
+  - Arne Arnesson
+  - Arnevägen 123, lgh 123
+  - 1234 ArneLund
+
+bank:
+  - "Bank: Min Bank"
+  - "Konto: 1123 12312 421"
+
+service:
+  - description: Lön
+    date: 2022-12-25
+    amount: 123123
+
+footer: Godkänd för F-skattesedel
+---
