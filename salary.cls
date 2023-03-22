@@ -17,6 +17,9 @@
 
 \RequirePackage{eurosym}
 
+% For capitalizing DTM months
+\RequirePackage{titlecaps}
+
 % Customizing lists
 \RequirePackage{enumitem}
 
@@ -43,13 +46,13 @@
 % For tables
 \RequirePackage{tabularx}
 
-% Dates
-\RequirePackage[en-US]{datetime2}
-
 % Localization
 \RequirePackage[swedish]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{fontspec}
+
+% Dates
+\RequirePackage[useregional=text]{datetime2}
 
 \defaultfontfeatures{Ligatures=TeX}
 
@@ -121,7 +124,7 @@
 \newcommand*{\dateNoDay}[1]{%
     \DTMsavedate{mydate}{#1}
     \DTMlangsetup{showdayofmonth=false}
-    \DTMusedate{mydate}
+    \titlecap{\today}
     \DTMlangsetup{showdayofmonth=true}
 }
 
