@@ -124,7 +124,7 @@
 \newcommand*{\dateNoDay}[1]{%
     \DTMsavedate{mydate}{#1}
     \DTMlangsetup{showdayofmonth=false}
-    \titlecap{\today}
+    \titlecap{\DTMusedate{mydate}}
     \DTMlangsetup{showdayofmonth=true}
 }
 
